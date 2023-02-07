@@ -23,9 +23,9 @@ export default function RootLayout({ children }) {
       */}
       <head />
 
-      <body className={`${montserrat.className} mx-32`}>
+      <body className={`${montserrat.className} mx-32 my-12`}>
         <nav>
-          <h1>LOGO</h1>
+          {/* <h1>LOGO</h1>
           <ul>
             <li>
               <a href="#">About</a>
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
             <li className="font-montserrat">
               <a href="#">About</a>
             </li>
-          </ul>
+          </ul> */}
         </nav>
         {children} {/* About page, each individual page*/}
       </body>

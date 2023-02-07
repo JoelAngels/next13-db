@@ -14,7 +14,6 @@ export default async function Home() {
   console.log(res);
   return (
     <main>
-      <h1 className="text-lg py-2 m-4">Hello Next 13 🔥🔥🔥</h1>
       <div className="grid gap-16 grid-cols-fluid">
         {res.results.map((movie) => (
           // **What we get from the movie
