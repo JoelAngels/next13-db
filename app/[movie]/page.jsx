@@ -1,11 +1,23 @@
 import Image from "next/image";
 
+export async function generateStaticParams() {
+  //go over each movie,  get the id and go over each one of them and render them out
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`
+  );
+  const res = await data.json();
+  return res.results.map((movie) => ({
+    movie: toString(movie.id),
+  }));
+}
+
 export default async function MovieDetail({ params }) {
   const { movie } = params;
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`,
+    { next: { revalidate: 60 } }
   );
 
   const res = await data.json();
@@ -21,7 +33,7 @@ export default async function MovieDetail({ params }) {
         </h2>
       </div>
       <Image
-        className="my-12 w-full object-contain"
+        className="my-12 w-full object-cover"
         src={imagePath + res.backdrop_path}
         width={1000}
         height={1000}
