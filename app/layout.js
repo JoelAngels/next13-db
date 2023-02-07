@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
 
-      <body className={`${(montserrat.className, poppins.className)}`}>
+      <body className={`${montserrat.className} mx-32`}>
         <nav>
           <h1>LOGO</h1>
           <ul>
